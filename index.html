@@ -1,0 +1,783 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Analyst Consultants — MEP Engineering, Concept to Commissioning</title>
+  <meta name="description" content="Analyst Consultants is a Noida-based MEP engineering consultancy delivering building services and highway electrical projects from concept to commissioning.">
+  <meta name="theme-color" content="#07090e">
+
+  <!-- Theme bootstrap: runs before paint so there is no flash of the wrong theme -->
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem('ac-theme');
+        var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        document.documentElement.setAttribute('data-theme', theme);
+      } catch (e) {}
+      document.documentElement.classList.add('js');
+      // Safety net: if scripts fail to load, never leave content hidden
+      setTimeout(function () {
+        if (!window.gsap) {
+          document.documentElement.classList.remove('js');
+          var p = document.getElementById('preloader'); if (p) p.remove();
+          document.body.classList.remove('is-loading');
+        }
+      }, 5000);
+    })();
+  </script>
+
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23F2B25C'/%3E%3Cstop offset='1' stop-color='%23D9542B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%2307090e'/%3E%3Cpath d='M14 48 30 14h4l16 34h-7l-4-9H25l-4 9z M27.5 33h9L32 22z' fill='url(%23g)'/%3E%3C/svg%3E">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Stack+Sans+Headline:wght@200..700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300..700&family=Instrument+Sans:ital,wght@0,400..700;1,400..700&family=Instrument+Serif:ital@0;1&display=swap" rel="stylesheet">
+
+  <!-- Libraries -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.css">
+
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body class="is-loading">
+
+  <!-- ============ PRELOADER ============ -->
+  <div class="preloader" id="preloader" aria-hidden="true">
+    <div class="preloader__inner">
+      <svg class="preloader__mark" viewBox="0 0 64 64" fill="none">
+        <path class="pl-path" d="M14 48 30 14h4l16 34h-7l-4-9H25l-4 9zM27.5 33h9L32 22z" stroke="url(#plg)" stroke-width="1.2"/>
+        <defs><linearGradient id="plg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F2B25C"/><stop offset="1" stop-color="#D9542B"/></linearGradient></defs>
+      </svg>
+      <div class="preloader__word"><span>Analyst</span> <em>Consultants</em></div>
+      <div class="preloader__bar"><i id="plBar"></i></div>
+      <div class="preloader__count"><span id="plCount">0</span>%</div>
+    </div>
+  </div>
+
+  <!-- ============ CURSOR ============ -->
+  <div class="cursor" aria-hidden="true"><div class="cursor__dot"></div><div class="cursor__ring"><span class="cursor__label">View</span></div></div>
+
+  <!-- ============ SCROLL PROGRESS ============ -->
+  <div class="scroll-progress" aria-hidden="true"><i></i></div>
+
+  <!-- ============ HEADER ============ -->
+  <header class="site-header" id="siteHeader">
+    <div class="wrap header-inner">
+      <a href="#top" class="brand" aria-label="Analyst Consultants — Home">
+        <span class="brand__mark">
+          <svg viewBox="0 0 64 64"><defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F2B25C"/><stop offset="1" stop-color="#D9542B"/></linearGradient></defs><path d="M14 48 30 14h4l16 34h-7l-4-9H25l-4 9zM27.5 33h9L32 22z" fill="url(#bg1)"/></svg>
+        </span>
+        <span class="brand__text">
+          <strong>Analyst</strong>
+          <small>Consultants</small>
+        </span>
+      </a>
+
+      <nav class="main-nav" aria-label="Primary">
+        <ul>
+          <li><a href="#about">About</a></li>
+          <li class="has-mega">
+            <button class="mega-trigger" aria-expanded="false" aria-controls="megaMenu">Expertise <i class="bi bi-chevron-down"></i></button>
+            <div class="mega" id="megaMenu">
+              <div class="mega__grid">
+                <div class="mega__col">
+                  <span class="mega__label">Services</span>
+                  <a href="#expertise">Concept Report Preparation</a>
+                  <a href="#expertise">Planning</a>
+                  <a href="#expertise">Upgradation &amp; Remodelling</a>
+                  <a href="#expertise">Detail Design</a>
+                  <a href="#expertise">Tendering</a>
+                </div>
+                <div class="mega__col">
+                  <span class="mega__label">Delivery</span>
+                  <a href="#expertise">Project Management</a>
+                  <a href="#expertise">Construction Supervision</a>
+                  <a href="#expertise">Commissioning</a>
+                  <a href="#expertise">Consulting &amp; Project Development</a>
+                </div>
+                <div class="mega__col">
+                  <span class="mega__label">Sectors</span>
+                  <a href="#sectors">Highways &amp; Infrastructure</a>
+                  <a href="#sectors">Commercial</a>
+                  <a href="#sectors">Residential</a>
+                  <a href="#sectors">Industrial</a>
+                  <a href="#sectors">Institutional</a>
+                </div>
+                <a href="#drawings" class="mega__feature">
+                  <span class="mega__feature-img"><img src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=600&q=70&auto=format&fit=crop" alt="" loading="lazy" onerror="this.remove()"></span>
+                  <span class="mega__feature-body">
+                    <span class="chip chip--glow">New</span>
+                    <strong>Drawings Library</strong>
+                    <small>Own complete engineering drawing sets. Secure checkout and instant download.</small>
+                  </span>
+                </a>
+              </div>
+            </div>
+          </li>
+          <li><a href="#sectors">Sectors</a></li>
+          <li><a href="#projects">Projects</a></li>
+          <li><a href="#drawings">Drawings</a></li>
+          <li><a href="#insights">Insights</a></li>
+          <li><a href="#contact">Careers</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-actions">
+        <button class="theme-toggle" id="themeToggle" type="button" aria-label="Switch colour theme">
+          <span class="theme-toggle__track">
+            <span class="theme-toggle__thumb">
+              <svg class="ico-sun" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.9 4.9l1.4 1.4M17.7 17.7l1.4 1.4M2 12h2M20 12h2M4.9 19.1l1.4-1.4M17.7 6.3l1.4-1.4"/></svg>
+              <svg class="ico-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M21 12.8A9 9 0 1 1 11.2 3a7 7 0 0 0 9.8 9.8z"/></svg>
+            </span>
+          </span>
+        </button>
+        <a href="#contact" class="btn-pill btn-pill--grad d-none d-md-inline-flex magnetic"><span>Discuss Your Project</span><i class="bi bi-arrow-up-right"></i></a>
+        <button class="burger d-xl-none" type="button" data-bs-toggle="offcanvas" data-bs-target="#mobileNav" aria-controls="mobileNav" aria-label="Open menu">
+          <span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ============ MOBILE NAV ============ -->
+  <div class="offcanvas offcanvas-end mobile-nav" tabindex="-1" id="mobileNav" aria-labelledby="mobileNavLabel">
+    <div class="offcanvas-header">
+      <span class="mobile-nav__title" id="mobileNavLabel">Menu</span>
+      <button type="button" class="mobile-nav__close" data-bs-dismiss="offcanvas" aria-label="Close"><i class="bi bi-x-lg"></i></button>
+    </div>
+    <div class="offcanvas-body">
+      <nav class="mobile-nav__links">
+        <a href="#about" data-bs-dismiss="offcanvas"><span>01</span>About</a>
+        <a href="#expertise" data-bs-dismiss="offcanvas"><span>02</span>Expertise</a>
+        <a href="#sectors" data-bs-dismiss="offcanvas"><span>03</span>Sectors</a>
+        <a href="#projects" data-bs-dismiss="offcanvas"><span>04</span>Projects</a>
+        <a href="#drawings" data-bs-dismiss="offcanvas"><span>05</span>Drawings Library</a>
+        <a href="#insights" data-bs-dismiss="offcanvas"><span>06</span>Insights</a>
+        <a href="#contact" data-bs-dismiss="offcanvas"><span>07</span>Contact</a>
+      </nav>
+      <div class="mobile-nav__foot">
+        <a href="tel:+919810037922"><i class="bi bi-telephone"></i> +91-98100 37922</a>
+        <a href="mailto:office@analystconsultants.com"><i class="bi bi-envelope"></i> office@analystconsultants.com</a>
+        <a href="#contact" class="btn-pill btn-pill--grad w-100 justify-content-center mt-3" data-bs-dismiss="offcanvas"><span>Discuss Your Project</span><i class="bi bi-arrow-up-right"></i></a>
+      </div>
+    </div>
+  </div>
+
+  <main id="top">
+
+    <!-- ============ HERO ============ -->
+    <section class="hero" id="hero">
+      <div class="hero__bg" aria-hidden="true">
+        <div class="aurora aurora--1"></div>
+        <div class="aurora aurora--2"></div>
+        <div class="aurora aurora--3"></div>
+        <div class="hero__grid"></div>
+        <div class="grain"></div>
+      </div>
+
+      <div class="wrap hero__inner">
+        <div class="hero__copy">
+          <div class="eyebrow hero-reveal"><span class="eyebrow__dot"></span>MEP Engineering Consultancy · Noida, India</div>
+          <h1 class="hero__title">
+            <span class="line"><span class="line__inner">Engineering the</span></span>
+            <span class="line"><span class="line__inner">systems that let</span></span>
+            <span class="line"><span class="line__inner">buildings <em class="serif-grad">breathe.</em></span></span>
+          </h1>
+          <p class="hero__lead hero-reveal">From the first concept report to the final commissioning test, we design and deliver the electrical, mechanical and plumbing systems that power buildings and highways.</p>
+          <div class="hero__ctas hero-reveal">
+            <a href="#projects" class="btn-pill btn-pill--grad btn-pill--lg magnetic"><span>Explore Our Projects</span><i class="bi bi-arrow-right"></i></a>
+            <a href="#contact" class="btn-pill btn-pill--ghost btn-pill--lg magnetic"><span>Discuss Your Project</span></a>
+          </div>
+          <div class="hero__rotator hero-reveal">
+            <span class="hero__rotator-label">Now delivering</span>
+            <span class="hero__rotator-words" aria-live="polite">
+              <span class="is-active">Highway Electrical Works</span>
+              <span>HVAC &amp; Ventilation</span>
+              <span>Fire Fighting Systems</span>
+              <span>Power Distribution</span>
+              <span>Plumbing &amp; Drainage</span>
+            </span>
+          </div>
+        </div>
+
+        <div class="hero__visual">
+          <div class="hero-frame" data-tilt>
+            <div class="hero-frame__slides">
+              <div class="hero-slide is-active"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1400&q=80&auto=format&fit=crop" alt="Glass office towers rising into the sky" onerror="this.remove()"></div>
+              <div class="hero-slide"><img src="https://images.unsplash.com/photo-1473042904451-00171c69419d?w=1400&q=80&auto=format&fit=crop" alt="Highway with light trails at dusk" onerror="this.remove()"></div>
+              <div class="hero-slide"><img src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1400&q=80&auto=format&fit=crop" alt="Engineering team on a construction site" onerror="this.remove()"></div>
+            </div>
+            <div class="hero-frame__shade"></div>
+
+            <!-- Blueprint overlay that draws itself -->
+            <svg class="blueprint" viewBox="0 0 520 620" fill="none" aria-hidden="true">
+              <g class="bp-struct" stroke="currentColor" stroke-width="1">
+                <path class="draw" d="M60 580V150L260 60l200 90v430"/>
+                <path class="draw" d="M60 250h400M60 350h400M60 450h400M60 540h400"/>
+                <path class="draw" d="M160 580V105M360 580V105"/>
+              </g>
+              <g class="bp-duct" stroke-width="2.2" stroke-linecap="round">
+                <path class="draw" d="M90 225h330v-40M90 325h330M90 425h330M90 515h330"/>
+                <path class="draw" d="M420 185v370"/>
+              </g>
+              <g class="bp-elec" stroke-width="1.4" stroke-dasharray="5 6">
+                <path class="draw-dash" d="M110 580V170M110 270h70M110 370h70M110 470h70"/>
+              </g>
+              <g class="bp-dim" stroke="currentColor" stroke-width=".8">
+                <path class="draw" d="M30 150v430M24 150h12M24 580h12M60 600h400M60 594v12M460 594v12"/>
+              </g>
+              <g class="bp-nodes">
+                <circle cx="420" cy="225" r="5"/><circle cx="420" cy="325" r="5"/><circle cx="420" cy="425" r="5"/><circle cx="420" cy="515" r="5"/>
+                <circle cx="180" cy="270" r="4"/><circle cx="180" cy="370" r="4"/><circle cx="180" cy="470" r="4"/>
+              </g>
+              <text x="60" y="618" class="bp-text" text-anchor="start">B + G + 12 · SECTION A–A</text>
+            </svg>
+
+            <div class="hero-chip hero-chip--tl glass">
+              <span class="pulse"></span>
+              <div><strong>On site now</strong><small>Live project status</small></div>
+            </div>
+            <div class="hero-chip hero-chip--br glass">
+              <div class="hero-chip__icon"><i class="bi bi-lightning-charge"></i></div>
+              <div><strong data-slide-caption>Commercial Tower · MEP</strong><small data-slide-sub>Design → Commissioning</small></div>
+            </div>
+            <div class="hero-frame__dots" role="tablist" aria-label="Hero slides">
+              <button class="is-active" aria-label="Slide 1"></button><button aria-label="Slide 2"></button><button aria-label="Slide 3"></button>
+            </div>
+          </div>
+
+          <div class="spin-badge" aria-hidden="true">
+            <svg viewBox="0 0 120 120">
+              <defs><path id="circ" d="M60 60m-46 0a46 46 0 1 1 92 0a46 46 0 1 1-92 0"/></defs>
+              <text><textPath href="#circ" textLength="286" lengthAdjust="spacing">CONCEPT · DESIGN · SUPERVISION · COMMISSIONING ·</textPath></text>
+            </svg>
+            <span class="spin-badge__core"><i class="bi bi-arrow-down-right"></i></span>
+          </div>
+        </div>
+      </div>
+
+      <div class="wrap hero__foot hero-reveal">
+        <div class="hero__scroll"><span class="hero__scroll-line"></span>Scroll to explore</div>
+        <div class="hero__foot-meta">
+          <span><i class="bi bi-geo-alt"></i> R-122, Sector-21, Noida</span>
+          <span class="d-none d-sm-inline"><i class="bi bi-patch-check"></i> Concept to Commissioning</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ MARQUEE ============ -->
+    <section class="marquee-band" aria-label="Disciplines">
+      <div class="marquee" data-speed="38">
+        <div class="marquee__track">
+          <span>Electrical Systems</span><em>✦</em><span class="outline">HVAC Design</span><em>✦</em><span>Highway Lighting</span><em>✦</em><span class="outline">Fire Fighting</span><em>✦</em><span>Plumbing &amp; Drainage</span><em>✦</em><span class="outline">Power Distribution</span><em>✦</em><span>Building Automation</span><em>✦</em>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INTRO / ABOUT ============ -->
+    <section class="section intro" id="about">
+      <div class="wrap">
+        <div class="row g-5 align-items-start">
+          <div class="col-lg-3">
+            <div class="section-tag reveal"><span>01</span> The Firm</div>
+          </div>
+          <div class="col-lg-9">
+            <p class="intro__statement" data-split-words>
+              Analyst Consultants is an MEP engineering consultancy that takes projects from <em>concept to commissioning.</em> We work across buildings and infrastructure, from highway electrical works to complex building services, and we see each one through from design drawings to installation.
+            </p>
+            <div class="intro__foot reveal">
+              <div class="intro__sign">
+                <span class="intro__sign-mark">AC</span>
+                <div><strong>Engineering with authorship</strong><small>Every drawing is ours. Every system is accountable.</small></div>
+              </div>
+              <a href="#about" class="link-arrow">Read our story <i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Key numbers -->
+        <div class="stats glass-panel reveal">
+          <div class="stat">
+            <div class="stat__num"><span class="counter" data-to="25">0</span><sup>+</sup></div>
+            <div class="stat__label">Years of engineering practice</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num"><span class="counter" data-to="450">0</span><sup>+</sup></div>
+            <div class="stat__label">Projects designed &amp; delivered</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num"><span class="counter" data-to="180">0</span><sup>+</sup></div>
+            <div class="stat__label">Clients across sectors</div>
+          </div>
+          <div class="stat">
+            <div class="stat__num"><span class="counter" data-to="40">0</span><sup>+</sup></div>
+            <div class="stat__label">Cities with our systems running</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ EXPERTISE ============ -->
+    <section class="section expertise" id="expertise">
+      <div class="wrap">
+        <div class="section-head">
+          <div class="section-tag reveal"><span>02</span> Expertise</div>
+          <h2 class="section-title split-title">End-to-end engineering, <em>one accountable team.</em></h2>
+          <p class="section-sub reveal">Nine services across the whole project lifecycle. Bring us in at the start or partway through, and we will see it through to handover.</p>
+        </div>
+
+        <div class="svc-list" id="svcList">
+          <a href="#contact" class="svc" data-img="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=700&q=75&auto=format&fit=crop">
+            <span class="svc__no">01</span><span class="svc__title">Concept Report Preparation</span><span class="svc__desc">Feasibility, load estimates and system options, so the right decisions are made early.</span><span class="svc__arrow"><i class="bi bi-arrow-up-right"></i></span>
+          </a>
+          <a href="#contact" class="svc" data-img="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=700&q=75&auto=format&fit=crop">
+            <span class="svc__no">02</span><span class="svc__title">Planning</span><span class="svc__desc">Space and service-route planning that is coordinated with the architecture and structure.</span><span class="svc__arrow"><i class="bi bi-arrow-up-right"></i></span>
+          </a>
+          <a href="#contact" class="svc" data-img="https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?w=700&q=75&auto=format&fit=crop">
+            <span class="svc__no">03</span><span class="svc__title">Upgradation &amp; Remodelling</span><span class="svc__desc">Audits and retrofits that bring older systems up to current codes and efficiency standards.</span><span class="svc__arrow"><i class="bi bi-arrow-up-right"></i></span>
+          </a>
+          <a href="#contact" class="svc" data-img="https://images.unsplash.com/photo-1513828583688-c52646db42da?w=700&q=75&auto=format&fit=crop">
+            <span class="svc__no">04</span><span class="svc__title">Detail Design</span><span class="svc__desc">Construction-ready drawings, calculations and specifications for every discipline.</span><span class="svc__arrow"><i class="bi bi-arrow-up-right"></i></span>
+          </a>
+          <a href="#contact" class="svc" data-img="https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=700&q=75&auto=format&fit=crop">
+            <span class="svc__no">05</span><span class="svc__title">Tendering</span><span class="svc__desc">Bills of quantities, tender documents and bid evaluation that make costs clear.</span><span class="svc__arrow"><i class="bi bi-arrow-up-right"></i></span>
+          </a>
+          <a href="#contact" class="svc" data-img="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=700&q=75&auto=format&fit=crop">
+            <span class="svc__no">06</span><span class="svc__title">Project Management</span><span class="svc__desc">Schedules, vendor coordination and reporting that keep the project on time.</span><span class="svc__arrow"><i class="bi bi-arrow-up-right"></i></span>
+          </a>
+          <a href="#contact" class="svc" data-img="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&q=75&auto=format&fit=crop">
+            <span class="svc__no">07</span><span class="svc__title">Construction Supervision</span><span class="svc__desc">Quality checks on site, so what gets installed matches what was designed.</span><span class="svc__arrow"><i class="bi bi-arrow-up-right"></i></span>
+          </a>
+          <a href="#contact" class="svc" data-img="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=700&q=75&auto=format&fit=crop">
+            <span class="svc__no">08</span><span class="svc__title">Commissioning</span><span class="svc__desc">Testing, balancing and documented handover of every system.</span><span class="svc__arrow"><i class="bi bi-arrow-up-right"></i></span>
+          </a>
+          <a href="#contact" class="svc" data-img="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=700&q=75&auto=format&fit=crop">
+            <span class="svc__no">09</span><span class="svc__title">Consulting &amp; Project Development</span><span class="svc__desc">Advice for developers and authorities, from the first idea to a project ready to build.</span><span class="svc__arrow"><i class="bi bi-arrow-up-right"></i></span>
+          </a>
+        </div>
+      </div>
+      <div class="svc-preview" aria-hidden="true"><div class="svc-preview__inner"></div></div>
+    </section>
+
+    <!-- ============ SECTORS (horizontal pinned) ============ -->
+    <section class="sectors" id="sectors">
+      <div class="sectors__pin">
+        <div class="wrap sectors__head">
+          <div>
+            <div class="section-tag reveal"><span>03</span> Sectors Served</div>
+            <h2 class="section-title split-title">Built for every kind of <em>ambition.</em></h2>
+          </div>
+          <div class="sectors__progress d-none d-lg-flex"><span class="sectors__progress-num">01</span><span class="sectors__progress-bar"><i></i></span><span>05</span></div>
+        </div>
+        <div class="sectors__track">
+          <a href="#projects" class="sector-card">
+            <div class="sector-card__media"><img src="https://images.unsplash.com/photo-1473042904451-00171c69419d?w=1100&q=75&auto=format&fit=crop" alt="Highway at dusk" loading="lazy" onerror="this.remove()"></div>
+            <div class="sector-card__body">
+              <span class="sector-card__no">01</span>
+              <h3>Highways &amp; Infrastructure</h3>
+              <p>Highway lighting, toll plaza electrification, and tunnel and interchange power systems.</p>
+              <span class="sector-card__cta">View projects <i class="bi bi-arrow-right"></i></span>
+            </div>
+          </a>
+          <a href="#projects" class="sector-card">
+            <div class="sector-card__media"><img src="https://images.unsplash.com/photo-1486406146926-c627a92ad1ab?w=1100&q=75&auto=format&fit=crop" alt="Commercial towers" loading="lazy" onerror="this.remove()"></div>
+            <div class="sector-card__body">
+              <span class="sector-card__no">02</span>
+              <h3>Commercial</h3>
+              <p>Offices, malls and hospitality, with complete MEP for spaces that run all day, every day.</p>
+              <span class="sector-card__cta">View projects <i class="bi bi-arrow-right"></i></span>
+            </div>
+          </a>
+          <a href="#projects" class="sector-card">
+            <div class="sector-card__media"><img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?w=1100&q=75&auto=format&fit=crop" alt="Residential apartment building" loading="lazy" onerror="this.remove()"></div>
+            <div class="sector-card__body">
+              <span class="sector-card__no">03</span>
+              <h3>Residential</h3>
+              <p>Group housing and high-rise residences, with efficient services and comfort as standard.</p>
+              <span class="sector-card__cta">View projects <i class="bi bi-arrow-right"></i></span>
+            </div>
+          </a>
+          <a href="#projects" class="sector-card">
+            <div class="sector-card__media"><img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?w=1100&q=75&auto=format&fit=crop" alt="Industrial plant room with pipework" loading="lazy" onerror="this.remove()"></div>
+            <div class="sector-card__body">
+              <span class="sector-card__no">04</span>
+              <h3>Industrial</h3>
+              <p>Factories, warehouses and process plants, with power and utility systems designed for reliability.</p>
+              <span class="sector-card__cta">View projects <i class="bi bi-arrow-right"></i></span>
+            </div>
+          </a>
+          <a href="#projects" class="sector-card">
+            <div class="sector-card__media"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=1100&q=75&auto=format&fit=crop" alt="Institutional campus building" loading="lazy" onerror="this.remove()"></div>
+            <div class="sector-card__body">
+              <span class="sector-card__no">05</span>
+              <h3>Institutional</h3>
+              <p>Campuses, hospitals and public buildings, where safety and compliance come first.</p>
+              <span class="sector-card__cta">View projects <i class="bi bi-arrow-right"></i></span>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ FEATURED PROJECTS ============ -->
+    <section class="section projects" id="projects">
+      <div class="wrap">
+        <div class="section-head section-head--split">
+          <div>
+            <div class="section-tag reveal"><span>04</span> Featured Projects</div>
+            <h2 class="section-title split-title">Work that stands, <em>and keeps running.</em></h2>
+          </div>
+          <div class="projects__nav reveal">
+            <button class="round-btn proj-prev magnetic" aria-label="Previous project"><i class="bi bi-arrow-left"></i></button>
+            <button class="round-btn proj-next magnetic" aria-label="Next project"><i class="bi bi-arrow-right"></i></button>
+          </div>
+        </div>
+      </div>
+
+      <div class="swiper projects-swiper reveal">
+        <div class="swiper-wrapper">
+          <article class="swiper-slide proj-card" data-cursor="View">
+            <div class="proj-card__media"><img src="https://images.unsplash.com/photo-1487958449943-2429e8be8625?w=1000&q=75&auto=format&fit=crop" alt="" loading="lazy" onerror="this.remove()"><span class="status status--done">Completed</span></div>
+            <div class="proj-card__body">
+              <div class="proj-card__meta"><span>Commercial</span><span>Gurugram</span></div>
+              <h3>Corporate Headquarters, MEP Design</h3>
+              <ul class="proj-card__facts"><li><i class="bi bi-lightning"></i> 4.2 MVA</li><li><i class="bi bi-wind"></i> 1,800 TR</li><li><i class="bi bi-file-earmark-ruled"></i> Drawing set</li></ul>
+            </div>
+          </article>
+          <article class="swiper-slide proj-card" data-cursor="View">
+            <div class="proj-card__media"><img src="https://images.unsplash.com/photo-1473042904451-00171c69419d?w=1000&q=75&auto=format&fit=crop" alt="" loading="lazy" onerror="this.remove()"><span class="status status--live">Ongoing</span></div>
+            <div class="proj-card__body">
+              <div class="proj-card__meta"><span>Highways</span><span>Uttar Pradesh</span></div>
+              <h3>Expressway Lighting &amp; Electrical Works</h3>
+              <ul class="proj-card__facts"><li><i class="bi bi-signpost-2"></i> 62 km</li><li><i class="bi bi-lamp"></i> 3,400 poles</li><li><i class="bi bi-file-earmark-ruled"></i> Drawing set</li></ul>
+            </div>
+          </article>
+          <article class="swiper-slide proj-card" data-cursor="View">
+            <div class="proj-card__media"><img src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1000&q=75&auto=format&fit=crop" alt="" loading="lazy" onerror="this.remove()"><span class="status status--live">Ongoing</span></div>
+            <div class="proj-card__body">
+              <div class="proj-card__meta"><span>Residential</span><span>Noida</span></div>
+              <h3>High-Rise Group Housing, Twin Towers</h3>
+              <ul class="proj-card__facts"><li><i class="bi bi-buildings"></i> B+G+32</li><li><i class="bi bi-fire"></i> Fire &amp; PHE</li><li><i class="bi bi-file-earmark-ruled"></i> Drawing set</li></ul>
+            </div>
+          </article>
+          <article class="swiper-slide proj-card" data-cursor="View">
+            <div class="proj-card__media"><img src="https://images.unsplash.com/photo-1562774053-701939374585?w=1000&q=75&auto=format&fit=crop" alt="" loading="lazy" onerror="this.remove()"><span class="status status--done">Completed</span></div>
+            <div class="proj-card__body">
+              <div class="proj-card__meta"><span>Institutional</span><span>Delhi NCR</span></div>
+              <h3>University Academic Block &amp; Hostels</h3>
+              <ul class="proj-card__facts"><li><i class="bi bi-mortarboard"></i> 6 blocks</li><li><i class="bi bi-sun"></i> Solar PV</li><li><i class="bi bi-file-earmark-ruled"></i> Drawing set</li></ul>
+            </div>
+          </article>
+          <article class="swiper-slide proj-card" data-cursor="View">
+            <div class="proj-card__media"><img src="https://images.unsplash.com/photo-1513828583688-c52646db42da?w=1000&q=75&auto=format&fit=crop" alt="" loading="lazy" onerror="this.remove()"><span class="status status--done">Completed</span></div>
+            <div class="proj-card__body">
+              <div class="proj-card__meta"><span>Industrial</span><span>Greater Noida</span></div>
+              <h3>Manufacturing Plant Utilities</h3>
+              <ul class="proj-card__facts"><li><i class="bi bi-gear"></i> Process HVAC</li><li><i class="bi bi-plug"></i> 11 kV</li><li><i class="bi bi-file-earmark-ruled"></i> Drawing set</li></ul>
+            </div>
+          </article>
+          <article class="swiper-slide proj-card" data-cursor="View">
+            <div class="proj-card__media"><img src="https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=1000&q=75&auto=format&fit=crop" alt="" loading="lazy" onerror="this.remove()"><span class="status status--done">Completed</span></div>
+            <div class="proj-card__body">
+              <div class="proj-card__meta"><span>Residential</span><span>Dehradun</span></div>
+              <h3>Luxury Villa Enclave Services</h3>
+              <ul class="proj-card__facts"><li><i class="bi bi-house"></i> 48 villas</li><li><i class="bi bi-droplet"></i> STP &amp; WTP</li><li><i class="bi bi-file-earmark-ruled"></i> Drawing set</li></ul>
+            </div>
+          </article>
+        </div>
+      </div>
+      <div class="wrap">
+        <div class="projects__foot reveal">
+          <div class="swiper-progress"><i></i></div>
+          <a href="#projects" class="link-arrow">View all projects <i class="bi bi-arrow-right"></i></a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ DRAWINGS LIBRARY ============ -->
+    <section class="section drawings" id="drawings">
+      <div class="drawings__glow" aria-hidden="true"></div>
+      <div class="wrap">
+        <div class="row g-5 align-items-center">
+          <div class="col-lg-6">
+            <div class="section-tag reveal"><span>05</span> Drawings Library</div>
+            <h2 class="section-title split-title">Proven drawings, <em>yours to own.</em></h2>
+            <p class="section-sub reveal">Browse watermarked sample sheets from real projects, then buy the complete engineering drawing set and download it securely in minutes.</p>
+            <ul class="drawings__list">
+              <li class="reveal"><span class="ic"><i class="bi bi-eye"></i></span><div><strong>Preview before you buy</strong><small>Look through 3–4 watermarked sample sheets from every set.</small></div></li>
+              <li class="reveal"><span class="ic"><i class="bi bi-shield-lock"></i></span><div><strong>Secure Razorpay checkout</strong><small>Pay by UPI, card, net banking or wallet.</small></div></li>
+              <li class="reveal"><span class="ic"><i class="bi bi-cloud-arrow-down"></i></span><div><strong>Instant, protected delivery</strong><small>Get a time-limited download link by email the moment you pay.</small></div></li>
+            </ul>
+            <div class="d-flex flex-wrap gap-3 reveal">
+              <a href="#drawings" class="btn-pill btn-pill--grad btn-pill--lg magnetic"><span>Browse the Library</span><i class="bi bi-arrow-right"></i></a>
+            </div>
+          </div>
+          <div class="col-lg-6">
+            <div class="sheets" id="sheets">
+              <div class="sheet sheet--3"><div class="sheet__paper"><svg viewBox="0 0 300 210"><use href="#sheetArt"/></svg></div></div>
+              <div class="sheet sheet--2"><div class="sheet__paper"><svg viewBox="0 0 300 210"><use href="#sheetArt2"/></svg></div></div>
+              <div class="sheet sheet--1">
+                <div class="sheet__paper">
+                  <svg viewBox="0 0 300 210"><use href="#sheetArt"/></svg>
+                  <span class="sheet__wm">ANALYST CONSULTANTS · PREVIEW</span>
+                  <div class="sheet__title"><span>E-104</span><span>Electrical Layout · Level 04</span></div>
+                </div>
+              </div>
+              <div class="price-tag glass">
+                <small>Complete set · 46 sheets</small>
+                <strong>₹ 4,999</strong>
+                <span class="price-tag__btn">Buy Full Drawing Set <i class="bi bi-arrow-right"></i></span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SVG art symbols for drawing sheets -->
+    <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+      <symbol id="sheetArt" viewBox="0 0 300 210">
+        <g fill="none" stroke="currentColor" stroke-width=".7">
+          <rect x="8" y="8" width="284" height="194"/>
+          <rect x="24" y="24" width="190" height="150"/>
+          <path d="M24 74h190M24 124h190M87 24v150M151 24v150"/>
+          <path d="M40 40h30v20H40zM104 40h30v20h-30zM168 90h30v20h-30zM40 140h30v20H40z"/>
+          <path d="M55 60v30h64v-30M183 110v30h-64v-30" stroke-dasharray="3 3"/>
+          <circle cx="55" cy="90" r="2.5"/><circle cx="119" cy="90" r="2.5"/><circle cx="183" cy="140" r="2.5"/>
+          <rect x="226" y="24" width="56" height="150"/>
+          <path d="M226 44h56M226 64h56M226 84h56M226 154h56"/>
+          <path d="M8 182h284M200 182v20M250 182v20"/>
+        </g>
+      </symbol>
+      <symbol id="sheetArt2" viewBox="0 0 300 210">
+        <g fill="none" stroke="currentColor" stroke-width=".7">
+          <rect x="8" y="8" width="284" height="194"/>
+          <path d="M30 170 150 40l120 130z"/>
+          <path d="M60 170v-40h40v40M200 170v-40h40v40"/>
+          <path d="M150 40v130M90 105h120" stroke-dasharray="4 3"/>
+          <circle cx="150" cy="105" r="22"/><circle cx="150" cy="105" r="4"/>
+          <path d="M8 182h284M200 182v20M250 182v20"/>
+        </g>
+      </symbol>
+    </svg>
+
+    <!-- ============ WHY CHOOSE US ============ -->
+    <section class="section why" id="why">
+      <div class="wrap">
+        <div class="section-head text-center mx-auto">
+          <div class="section-tag section-tag--center reveal"><span>06</span> Why Analyst Consultants</div>
+          <h2 class="section-title split-title">Precision you can <em>build on.</em></h2>
+        </div>
+
+        <div class="bento">
+          <div class="bento__item bento__item--wide spot reveal">
+            <div class="bento__icon"><i class="bi bi-diagram-3"></i></div>
+            <h3>One team, every discipline</h3>
+            <p>Electrical, HVAC, plumbing and fire fighting are designed together, so services do not clash on site and nothing gets missed at handover.</p>
+            <div class="bento__disciplines"><span>Electrical</span><span>HVAC</span><span>PHE</span><span>Fire</span><span>ELV</span><span>Highway</span></div>
+          </div>
+          <div class="bento__item spot reveal">
+            <div class="bento__big"><span class="counter" data-to="100">0</span>%</div>
+            <h3>Drawing authorship</h3>
+            <p>Every sheet is produced in-house and backed by our engineers.</p>
+          </div>
+          <div class="bento__item spot reveal">
+            <div class="bento__icon"><i class="bi bi-rulers"></i></div>
+            <h3>Code-first design</h3>
+            <p>NBC, IS and IRC compliant from day one, so approvals go through cleanly.</p>
+          </div>
+
+          <div class="bento__item spot reveal">
+            <div class="bento__icon"><i class="bi bi-graph-up-arrow"></i></div>
+            <h3>Value engineering</h3>
+            <p>We size systems right, which cuts both capital and running costs.</p>
+          </div>
+          <div class="bento__item spot reveal">
+            <div class="bento__icon"><i class="bi bi-person-check"></i></div>
+            <h3>On site, every stage</h3>
+            <p>Our engineers supervise installation and testing in person, not from a distance.</p>
+          </div>
+          <div class="bento__item bento__item--quote spot reveal">
+            <i class="bi bi-quote bento__q"></i>
+            <p class="bento__quote">They didn't just hand over drawings. They stayed on site until every system ran exactly as designed.</p>
+            <div class="bento__who"><span class="avatar">RK</span><div><strong>Project Director</strong><small>Infrastructure Developer, NCR</small></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CLIENT LOGOS ============ -->
+    <section class="clients" aria-label="Our clients">
+      <div class="wrap"><p class="clients__label reveal">Trusted by developers, authorities and institutions</p></div>
+      <div class="marquee marquee--logos" data-speed="45">
+        <div class="marquee__track">
+          <span class="logo-w"><i class="bi bi-hexagon"></i> Northline Infra</span>
+          <span class="logo-w logo-w--serif">Meridian Estates</span>
+          <span class="logo-w"><i class="bi bi-triangle"></i> VANTA BUILD</span>
+          <span class="logo-w logo-w--serif"><em>Crestview</em> Group</span>
+          <span class="logo-w"><i class="bi bi-circle"></i> Arcadia Realty</span>
+          <span class="logo-w">STRATA<b>WORKS</b></span>
+          <span class="logo-w logo-w--serif">Halden &amp; Co.</span>
+          <span class="logo-w"><i class="bi bi-diamond"></i> Orbit Highways</span>
+        </div>
+      </div>
+      <div class="marquee marquee--logos marquee--reverse" data-speed="52">
+        <div class="marquee__track">
+          <span class="logo-w logo-w--serif">Sterling Campus</span>
+          <span class="logo-w"><i class="bi bi-square"></i> KAIROS</span>
+          <span class="logo-w">Lumen<b>Tech</b> Parks</span>
+          <span class="logo-w logo-w--serif"><em>Aster</em> Hospitals</span>
+          <span class="logo-w"><i class="bi bi-pentagon"></i> Primeway Logistics</span>
+          <span class="logo-w">ELEVATE</span>
+          <span class="logo-w logo-w--serif">Banyan Homes</span>
+          <span class="logo-w"><i class="bi bi-octagon"></i> Delta Industrial</span>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ INSIGHTS ============ -->
+    <section class="section insights" id="insights">
+      <div class="wrap">
+        <div class="section-head section-head--split">
+          <div>
+            <div class="section-tag reveal"><span>07</span> Latest Insights</div>
+            <h2 class="section-title split-title">Notes from <em>the drawing board.</em></h2>
+          </div>
+          <a href="#insights" class="link-arrow reveal">All insights <i class="bi bi-arrow-right"></i></a>
+        </div>
+
+        <div class="row g-4">
+          <div class="col-md-6 col-lg-4">
+            <article class="post reveal" data-cursor="Read">
+              <div class="post__media"><img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=900&q=75&auto=format&fit=crop" alt="" loading="lazy" onerror="this.remove()"></div>
+              <div class="post__body">
+                <div class="post__meta"><span class="chip">Article</span><span>6 min read</span></div>
+                <h3>Designing highway lighting for safety, not just lux levels</h3>
+                <span class="post__more">Read article <i class="bi bi-arrow-right"></i></span>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-4">
+            <article class="post reveal" data-cursor="Read">
+              <div class="post__media"><img src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=900&q=75&auto=format&fit=crop" alt="" loading="lazy" onerror="this.remove()"></div>
+              <div class="post__body">
+                <div class="post__meta"><span class="chip">News</span><span>Oct 2026</span></div>
+                <h3>Our Drawings Library is live: own proven MEP drawing sets</h3>
+                <span class="post__more">Read news <i class="bi bi-arrow-right"></i></span>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-12 col-lg-4">
+            <article class="post reveal" data-cursor="Read">
+              <div class="post__media"><img src="https://images.unsplash.com/photo-1497366216548-37526070297c?w=900&q=75&auto=format&fit=crop" alt="" loading="lazy" onerror="this.remove()"></div>
+              <div class="post__body">
+                <div class="post__meta"><span class="chip">Insight</span><span>4 min read</span></div>
+                <h3>Five MEP coordination mistakes that cost commercial projects months</h3>
+                <span class="post__more">Read insight <i class="bi bi-arrow-right"></i></span>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ CTA ============ -->
+    <section class="cta" id="contact">
+      <div class="wrap">
+        <div class="cta__card">
+          <div class="cta__mesh" aria-hidden="true"></div>
+          <div class="grain" aria-hidden="true"></div>
+          <div class="cta__content">
+            <span class="eyebrow eyebrow--light reveal"><span class="eyebrow__dot"></span>Have a project in mind?</span>
+            <h2 class="cta__title split-title">Let's discuss <em>your project.</em></h2>
+            <p class="cta__sub reveal">Send us your brief. A senior engineer will reply within one working day with a first view of scope, approach and timeline.</p>
+            <div class="cta__actions reveal">
+              <a href="mailto:office@analystconsultants.com" class="cta__orb magnetic" aria-label="Start a conversation">
+                <span>Start a<br>conversation</span><i class="bi bi-arrow-up-right"></i>
+              </a>
+              <div class="cta__contacts">
+                <a href="tel:+919810037922"><i class="bi bi-telephone"></i>+91-98100 37922</a>
+                <a href="mailto:office@analystconsultants.com"><i class="bi bi-envelope"></i>office@analystconsultants.com</a>
+                <a href="https://wa.me/919810037922" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i>Chat on WhatsApp</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- ============ FOOTER ============ -->
+  <footer class="footer">
+    <div class="wrap">
+      <div class="newsletter glass-panel reveal">
+        <div>
+          <h3>The Analyst Brief</h3>
+          <p>Project stories, engineering insights and new drawing sets, sent once a month.</p>
+        </div>
+        <form class="newsletter__form" id="newsletterForm" novalidate>
+          <label for="nlEmail" class="visually-hidden">Email address</label>
+          <input id="nlEmail" type="email" placeholder="Your work email" required>
+          <button type="submit" class="btn-pill btn-pill--grad"><span>Subscribe</span><i class="bi bi-arrow-right"></i></button>
+          <small class="newsletter__msg" id="nlMsg" role="status"></small>
+        </form>
+      </div>
+
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="#top" class="brand">
+            <span class="brand__mark"><svg viewBox="0 0 64 64"><defs><linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F2B25C"/><stop offset="1" stop-color="#D9542B"/></linearGradient></defs><path d="M14 48 30 14h4l16 34h-7l-4-9H25l-4 9zM27.5 33h9L32 22z" fill="url(#bg2)"/></svg></span>
+            <span class="brand__text"><strong>Analyst</strong><small>Consultants</small></span>
+          </a>
+          <p>MEP engineering consultancy delivering projects from concept to commissioning.</p>
+          <div class="socials">
+            <a href="#" aria-label="LinkedIn"><i class="bi bi-linkedin"></i></a>
+            <a href="#" aria-label="Instagram"><i class="bi bi-instagram"></i></a>
+            <a href="#" aria-label="X"><i class="bi bi-twitter-x"></i></a>
+            <a href="#" aria-label="YouTube"><i class="bi bi-youtube"></i></a>
+          </div>
+        </div>
+        <div>
+          <h4>Company</h4>
+          <a href="#about">About Us</a><a href="#about">Leadership</a><a href="#contact">Careers</a><a href="#contact">Company Profile</a>
+        </div>
+        <div>
+          <h4>Work</h4>
+          <a href="#expertise">Expertise</a><a href="#sectors">Sectors</a><a href="#projects">Projects</a><a href="#drawings">Drawings Library</a><a href="#about">Clientele</a>
+        </div>
+        <div class="footer__contact">
+          <h4>Visit</h4>
+          <p>R-122, 1st Floor, Sector-21,<br>Noida – 201301, Uttar Pradesh</p>
+          <a href="tel:+919810037922">+91-98100 37922</a>
+          <a href="mailto:office@analystconsultants.com">office@analystconsultants.com</a>
+        </div>
+      </div>
+
+      <div class="footer__giant" aria-hidden="true"><span>Analyst</span> <em>Consultants</em></div>
+
+      <div class="footer__bottom">
+        <span>© 2026 Analyst Consultants. All rights reserved.</span>
+        <span class="footer__legal"><a href="#">Privacy</a><a href="#">Terms</a><a href="#">Refund Policy</a><a href="#">Delivery Policy</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Floating actions -->
+  <a href="https://wa.me/919810037922" class="fab-wa" target="_blank" rel="noopener" aria-label="Chat on WhatsApp"><i class="bi bi-whatsapp"></i></a>
+  <button class="to-top" id="toTop" aria-label="Back to top">
+    <svg viewBox="0 0 44 44"><circle cx="22" cy="22" r="20" class="to-top__track"/><circle cx="22" cy="22" r="20" class="to-top__ring" id="toTopRing"/></svg>
+    <i class="bi bi-arrow-up"></i>
+  </button>
+
+  <!-- Scripts -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/lenis@1.1.13/dist/lenis.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11.1.14/swiper-bundle.min.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>
