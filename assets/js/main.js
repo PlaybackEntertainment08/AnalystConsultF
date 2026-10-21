@@ -23,7 +23,7 @@
     if (metaTheme) metaTheme.setAttribute('content', theme === 'light' ? '#F5F2EC' : '#07090E');
     themeBtn && themeBtn.setAttribute('aria-label', theme === 'light' ? 'Switch to dark theme' : 'Switch to light theme');
   }
-  applyTheme(html.getAttribute('data-theme') || 'dark');
+  applyTheme(html.getAttribute('data-theme') || 'light');
 
   themeBtn && themeBtn.addEventListener('click', () => {
     const next = html.getAttribute('data-theme') === 'light' ? 'dark' : 'light';
@@ -46,13 +46,6 @@
     });
     vt.finished.finally(() => html.classList.remove('theme-switching'));
   });
-
-  // Follow the OS theme until the visitor picks one
-  try {
-    window.matchMedia('(prefers-color-scheme: light)').addEventListener('change', (e) => {
-      if (!localStorage.getItem('ac-theme')) applyTheme(e.matches ? 'light' : 'dark');
-    });
-  } catch (e) {}
 
   /* ---------------------------------------------------------
      NO-GSAP FALLBACK
@@ -186,14 +179,11 @@
   if (preloader && !reduceMotion) {
     const pl = { v: 0 };
     const countEl = $('#plCount');
-    const pathEl = $('.pl-path');
-    const len = pathEl.getTotalLength();
-    gsap.set(pathEl, { strokeDasharray: len, strokeDashoffset: len });
-
     gsap.timeline()
-      .from('.preloader__word', { opacity: 0, y: 14, duration: 0.8 }, 0)
-      .to(pathEl, { strokeDashoffset: 0, duration: 1.6, ease: 'power2.inOut' }, 0)
-      .to(pathEl, { fill: 'url(#plg)', duration: 0.5 }, 1.3)
+      .fromTo('.preloader__mark',
+        { clipPath: 'inset(0% 100% 0% 0%)', scale: 0.92 },
+        { clipPath: 'inset(0% 0% 0% 0%)', scale: 1, duration: 1.5, ease: 'power3.inOut' }, 0)
+      .from('.preloader__word', { opacity: 0, y: 14, duration: 0.8 }, 0.5)
       .to(pl, { v: 100, duration: 1.7, ease: 'power3.inOut', onUpdate: () => { countEl.textContent = Math.round(pl.v); } }, 0)
       .to('#plBar', { width: '100%', duration: 1.7, ease: 'power3.inOut' }, 0)
       .to('.preloader__inner', { opacity: 0, y: -30, duration: 0.6, ease: 'power2.in' }, 1.9)
@@ -374,33 +364,53 @@
   });
 
   /* ---------------------------------------------------------
-     EXPERTISE — floating image preview
+     EXPERTISE — expanding panels (hover / tap / keyboard, autoplay in view)
      --------------------------------------------------------- */
-  const preview = $('.svc-preview');
-  const previewInner = $('.svc-preview__inner');
-  if (preview && finePointer && window.innerWidth >= 992) {
-    // Preload images
-    $$('.svc').forEach((s) => { const im = new Image(); im.src = s.dataset.img; });
-    const px = gsap.quickTo(preview, 'x', { duration: 0.6, ease: 'power3' });
-    const py = gsap.quickTo(preview, 'y', { duration: 0.6, ease: 'power3' });
-    const pr = gsap.quickTo(preview, 'rotation', { duration: 0.8, ease: 'power3' });
-    let lastX = 0;
-    gsap.set(preview, { xPercent: -50, yPercent: -50 });
+  const xp = $('#xp');
+  if (xp) {
+    const xpPanels = $$('.xp__panel', xp);
+    const xpNow = $('#xpNow');
+    let xpIdx = 0;
+    let hoverTimer;
+    let autoTimer;
+    let userTook = false;
 
-    const list = $('#svcList');
-    list.addEventListener('mousemove', (e) => {
-      px(e.clientX + 170); py(e.clientY);
-      pr(Math.max(-12, Math.min(12, (e.clientX - lastX) * 0.6)));
-      lastX = e.clientX;
-    });
-    $$('.svc', list).forEach((s) => {
-      s.addEventListener('mouseenter', () => {
-        previewInner.style.backgroundImage = `url("${s.dataset.img}")`;
-        gsap.fromTo(previewInner, { scale: 1.25 }, { scale: 1, duration: 0.9 });
+    const setPanel = (i) => {
+      if (i === xpIdx) return;
+      xpPanels[xpIdx].classList.remove('is-active');
+      xpPanels[xpIdx].setAttribute('aria-expanded', 'false');
+      xpIdx = i;
+      xpPanels[i].classList.add('is-active');
+      xpPanels[i].setAttribute('aria-expanded', 'true');
+      if (xpNow) gsap.fromTo(xpNow, { yPercent: 60, opacity: 0 }, { yPercent: 0, opacity: 1, duration: 0.6, onStart: () => { xpNow.textContent = String(i + 1).padStart(2, '0'); } });
+    };
+    const takeOver = () => { userTook = true; clearInterval(autoTimer); };
+
+    xpPanels.forEach((panel, i) => {
+      panel.addEventListener('mouseenter', () => {
+        if (!finePointer) return;
+        clearTimeout(hoverTimer);
+        hoverTimer = setTimeout(() => { takeOver(); setPanel(i); }, 110);
+      });
+      panel.addEventListener('mouseleave', () => clearTimeout(hoverTimer));
+      panel.addEventListener('click', () => { takeOver(); setPanel(i); });
+      panel.addEventListener('focus', () => { takeOver(); setPanel(i); });
+      panel.addEventListener('keydown', (e) => {
+        if (e.key === 'ArrowRight' || e.key === 'ArrowDown') { e.preventDefault(); xpPanels[(i + 1) % xpPanels.length].focus(); }
+        if (e.key === 'ArrowLeft' || e.key === 'ArrowUp') { e.preventDefault(); xpPanels[(i - 1 + xpPanels.length) % xpPanels.length].focus(); }
       });
     });
-    list.addEventListener('mouseenter', () => gsap.to(preview, { opacity: 1, scale: 1, duration: 0.6 }));
-    list.addEventListener('mouseleave', () => gsap.to(preview, { opacity: 0, scale: 0.6, duration: 0.5 }));
+
+    // Gentle autoplay on desktop until the visitor interacts
+    if (finePointer && !reduceMotion) {
+      ScrollTrigger.create({
+        trigger: xp, start: 'top 75%', end: 'bottom 25%',
+        onToggle: (self) => {
+          clearInterval(autoTimer);
+          if (self.isActive && !userTook) autoTimer = setInterval(() => setPanel((xpIdx + 1) % xpPanels.length), 3800);
+        }
+      });
+    }
   }
 
   /* ---------------------------------------------------------
@@ -515,13 +525,47 @@
 
     document.addEventListener('mouseover', (e) => {
       const view = e.target.closest('[data-cursor]');
-      const hov = e.target.closest('a, button, input, .svc');
+      const hov = e.target.closest('a, button, input, textarea, .xp__panel:not(.is-active)');
       cursor.classList.toggle('is-view', !!view);
       cursor.classList.toggle('is-hover', !view && !!hov);
       if (view) label.textContent = view.dataset.cursor;
     });
     document.addEventListener('mouseleave', () => gsap.to(cursor, { opacity: 0, duration: 0.3 }));
     document.addEventListener('mouseenter', () => gsap.to(cursor, { opacity: 1, duration: 0.3 }));
+  }
+
+  /* ---------------------------------------------------------
+     PROJECT BRIEF — chips, dimension line, form (front-end demo only)
+     --------------------------------------------------------- */
+  $$('.chips').forEach((group) => {
+    const opts = $$('.chip-opt', group);
+    opts.forEach((o) => o.addEventListener('click', () => {
+      opts.forEach((x) => { x.classList.remove('is-on'); x.setAttribute('aria-pressed', 'false'); });
+      o.classList.add('is-on');
+      o.setAttribute('aria-pressed', 'true');
+    }));
+  });
+
+  gsap.from('.dim__line', { scaleX: 0, duration: 1.6, ease: 'power3.inOut', scrollTrigger: { trigger: '.dim', start: 'top 85%', once: true } });
+  gsap.from('.tb-cell', { opacity: 0, y: 16, stagger: 0.08, duration: 1, scrollTrigger: { trigger: '.title-block', start: 'top 95%', once: true } });
+
+  const brief = $('#briefForm');
+  if (brief) {
+    brief.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const msg = $('#briefMsg');
+      let ok = true;
+      $$('input[required]', brief).forEach((inp) => {
+        const bad = !inp.value.trim();
+        inp.closest('.field').classList.toggle('is-error', bad);
+        if (bad) ok = false;
+      });
+      if (!ok) { msg.textContent = 'Please add your name and an email or phone number.'; return; }
+      msg.textContent = 'Thank you. Your brief is with our engineers. Expect a reply within one working day.';
+      brief.reset();
+      gsap.fromTo(brief, { scale: 0.985 }, { scale: 1, duration: 0.9, ease: 'elastic.out(1,.5)' });
+    });
+    brief.addEventListener('input', (e) => { const f = e.target.closest('.field'); f && f.classList.remove('is-error'); });
   }
 
   /* ---------------------------------------------------------

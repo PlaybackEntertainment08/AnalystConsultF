@@ -1,18 +1,18 @@
 <!doctype html>
-<html lang="en" data-theme="dark">
+<html lang="en" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Analyst Consultants — MEP Engineering, Concept to Commissioning</title>
   <meta name="description" content="Analyst Consultants is a Noida-based MEP engineering consultancy delivering building services and highway electrical projects from concept to commissioning.">
-  <meta name="theme-color" content="#07090e">
+  <meta name="theme-color" content="#F5F2EC">
 
   <!-- Theme bootstrap: runs before paint so there is no flash of the wrong theme -->
   <script>
     (function () {
       try {
         var saved = localStorage.getItem('ac-theme');
-        var theme = saved || (window.matchMedia('(prefers-color-scheme: light)').matches ? 'light' : 'dark');
+        var theme = saved === 'dark' ? 'dark' : 'light';
         document.documentElement.setAttribute('data-theme', theme);
       } catch (e) {}
       document.documentElement.classList.add('js');
@@ -27,7 +27,8 @@
     })();
   </script>
 
-  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Cdefs%3E%3ClinearGradient id='g' x1='0' y1='0' x2='1' y2='1'%3E%3Cstop offset='0' stop-color='%23F2B25C'/%3E%3Cstop offset='1' stop-color='%23D9542B'/%3E%3C/linearGradient%3E%3C/defs%3E%3Crect width='64' height='64' rx='16' fill='%2307090e'/%3E%3Cpath d='M14 48 30 14h4l16 34h-7l-4-9H25l-4 9z M27.5 33h9L32 22z' fill='url(%23g)'/%3E%3C/svg%3E">
+  <link rel="icon" href="assets/img/favicon.jpeg">
+  <link rel="apple-touch-icon" href="assets/img/favicon.jpeg">
 
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -47,10 +48,7 @@
   <!-- ============ PRELOADER ============ -->
   <div class="preloader" id="preloader" aria-hidden="true">
     <div class="preloader__inner">
-      <svg class="preloader__mark" viewBox="0 0 64 64" fill="none">
-        <path class="pl-path" d="M14 48 30 14h4l16 34h-7l-4-9H25l-4 9zM27.5 33h9L32 22z" stroke="url(#plg)" stroke-width="1.2"/>
-        <defs><linearGradient id="plg" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F2B25C"/><stop offset="1" stop-color="#D9542B"/></linearGradient></defs>
-      </svg>
+      <img class="preloader__mark" src="assets/img/logo-mark.png" alt="">
       <div class="preloader__word"><span>Analyst</span> <em>Consultants</em></div>
       <div class="preloader__bar"><i id="plBar"></i></div>
       <div class="preloader__count"><span id="plCount">0</span>%</div>
@@ -67,9 +65,7 @@
   <header class="site-header" id="siteHeader">
     <div class="wrap header-inner">
       <a href="#top" class="brand" aria-label="Analyst Consultants — Home">
-        <span class="brand__mark">
-          <svg viewBox="0 0 64 64"><defs><linearGradient id="bg1" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F2B25C"/><stop offset="1" stop-color="#D9542B"/></linearGradient></defs><path d="M14 48 30 14h4l16 34h-7l-4-9H25l-4 9zM27.5 33h9L32 22z" fill="url(#bg1)"/></svg>
-        </span>
+        <span class="brand__mark"><img src="assets/img/logo-mark.png" alt="" width="54" height="36"></span>
         <span class="brand__text">
           <strong>Analyst</strong>
           <small>Consultants</small>
@@ -301,19 +297,19 @@
         <!-- Key numbers -->
         <div class="stats glass-panel reveal">
           <div class="stat">
-            <div class="stat__num"><span class="counter" data-to="25">0</span><sup>+</sup></div>
+            <div class="stat__num"><span class="counter" data-to="25">0</span><span class="stat__plus">+</span></div>
             <div class="stat__label">Years of engineering practice</div>
           </div>
           <div class="stat">
-            <div class="stat__num"><span class="counter" data-to="450">0</span><sup>+</sup></div>
+            <div class="stat__num"><span class="counter" data-to="450">0</span><span class="stat__plus">+</span></div>
             <div class="stat__label">Projects designed &amp; delivered</div>
           </div>
           <div class="stat">
-            <div class="stat__num"><span class="counter" data-to="180">0</span><sup>+</sup></div>
+            <div class="stat__num"><span class="counter" data-to="180">0</span><span class="stat__plus">+</span></div>
             <div class="stat__label">Clients across sectors</div>
           </div>
           <div class="stat">
-            <div class="stat__num"><span class="counter" data-to="40">0</span><sup>+</sup></div>
+            <div class="stat__num"><span class="counter" data-to="40">0</span><span class="stat__plus">+</span></div>
             <div class="stat__label">Cities with our systems running</div>
           </div>
         </div>
@@ -323,43 +319,119 @@
     <!-- ============ EXPERTISE ============ -->
     <section class="section expertise" id="expertise">
       <div class="wrap">
-        <div class="section-head">
-          <div class="section-tag reveal"><span>02</span> Expertise</div>
-          <h2 class="section-title split-title">End-to-end engineering, <em>one accountable team.</em></h2>
-          <p class="section-sub reveal">Nine services across the whole project lifecycle. Bring us in at the start or partway through, and we will see it through to handover.</p>
+        <div class="section-head section-head--split">
+          <div>
+            <div class="section-tag reveal"><span>02</span> Expertise</div>
+            <h2 class="section-title split-title">End-to-end engineering, <em>one accountable team.</em></h2>
+          </div>
+          <div class="xp__meta reveal">
+            <span class="xp__count"><b id="xpNow">01</b> / 09</span>
+            <span class="xp__hint"><i class="bi bi-hand-index"></i> Hover or tap to explore</span>
+          </div>
         </div>
 
-        <div class="svc-list" id="svcList">
-          <a href="#contact" class="svc" data-img="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=700&q=75&auto=format&fit=crop">
-            <span class="svc__no">01</span><span class="svc__title">Concept Report Preparation</span><span class="svc__desc">Feasibility, load estimates and system options, so the right decisions are made early.</span><span class="svc__arrow"><i class="bi bi-arrow-up-right"></i></span>
-          </a>
-          <a href="#contact" class="svc" data-img="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=700&q=75&auto=format&fit=crop">
-            <span class="svc__no">02</span><span class="svc__title">Planning</span><span class="svc__desc">Space and service-route planning that is coordinated with the architecture and structure.</span><span class="svc__arrow"><i class="bi bi-arrow-up-right"></i></span>
-          </a>
-          <a href="#contact" class="svc" data-img="https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?w=700&q=75&auto=format&fit=crop">
-            <span class="svc__no">03</span><span class="svc__title">Upgradation &amp; Remodelling</span><span class="svc__desc">Audits and retrofits that bring older systems up to current codes and efficiency standards.</span><span class="svc__arrow"><i class="bi bi-arrow-up-right"></i></span>
-          </a>
-          <a href="#contact" class="svc" data-img="https://images.unsplash.com/photo-1513828583688-c52646db42da?w=700&q=75&auto=format&fit=crop">
-            <span class="svc__no">04</span><span class="svc__title">Detail Design</span><span class="svc__desc">Construction-ready drawings, calculations and specifications for every discipline.</span><span class="svc__arrow"><i class="bi bi-arrow-up-right"></i></span>
-          </a>
-          <a href="#contact" class="svc" data-img="https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=700&q=75&auto=format&fit=crop">
-            <span class="svc__no">05</span><span class="svc__title">Tendering</span><span class="svc__desc">Bills of quantities, tender documents and bid evaluation that make costs clear.</span><span class="svc__arrow"><i class="bi bi-arrow-up-right"></i></span>
-          </a>
-          <a href="#contact" class="svc" data-img="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=700&q=75&auto=format&fit=crop">
-            <span class="svc__no">06</span><span class="svc__title">Project Management</span><span class="svc__desc">Schedules, vendor coordination and reporting that keep the project on time.</span><span class="svc__arrow"><i class="bi bi-arrow-up-right"></i></span>
-          </a>
-          <a href="#contact" class="svc" data-img="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=700&q=75&auto=format&fit=crop">
-            <span class="svc__no">07</span><span class="svc__title">Construction Supervision</span><span class="svc__desc">Quality checks on site, so what gets installed matches what was designed.</span><span class="svc__arrow"><i class="bi bi-arrow-up-right"></i></span>
-          </a>
-          <a href="#contact" class="svc" data-img="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=700&q=75&auto=format&fit=crop">
-            <span class="svc__no">08</span><span class="svc__title">Commissioning</span><span class="svc__desc">Testing, balancing and documented handover of every system.</span><span class="svc__arrow"><i class="bi bi-arrow-up-right"></i></span>
-          </a>
-          <a href="#contact" class="svc" data-img="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=700&q=75&auto=format&fit=crop">
-            <span class="svc__no">09</span><span class="svc__title">Consulting &amp; Project Development</span><span class="svc__desc">Advice for developers and authorities, from the first idea to a project ready to build.</span><span class="svc__arrow"><i class="bi bi-arrow-up-right"></i></span>
-          </a>
+        <div class="xp reveal" id="xp">
+          <article class="xp__panel is-active" tabindex="0" aria-expanded="true">
+            <img class="xp__img" src="https://images.unsplash.com/photo-1503387762-592deb58ef4e?w=1100&q=75&auto=format&fit=crop" alt="" loading="lazy" onerror="this.remove()">
+            <span class="xp__no">01</span>
+            <h3 class="xp__vtitle" aria-hidden="true">Concept Report Preparation</h3>
+            <div class="xp__content">
+              <span class="xp__phase">Pre-design</span>
+              <h3>Concept Report Preparation</h3>
+              <p>Feasibility studies, load estimates and system options, so the right decisions are made early.</p>
+              <a href="#contact" class="xp__cta">Enquire about this service <i class="bi bi-arrow-up-right"></i></a>
+            </div>
+          </article>
+          <article class="xp__panel" tabindex="0" aria-expanded="false">
+            <img class="xp__img" src="https://images.unsplash.com/photo-1581092160562-40aa08e78837?w=1100&q=75&auto=format&fit=crop" alt="" loading="lazy" onerror="this.remove()">
+            <span class="xp__no">02</span>
+            <h3 class="xp__vtitle" aria-hidden="true">Planning</h3>
+            <div class="xp__content">
+              <span class="xp__phase">Pre-design</span>
+              <h3>Planning</h3>
+              <p>Space and service-route planning that is coordinated with the architecture and structure.</p>
+              <a href="#contact" class="xp__cta">Enquire about this service <i class="bi bi-arrow-up-right"></i></a>
+            </div>
+          </article>
+          <article class="xp__panel" tabindex="0" aria-expanded="false">
+            <img class="xp__img" src="https://images.unsplash.com/photo-1508450859948-4e04fabaa4ea?w=1100&q=75&auto=format&fit=crop" alt="" loading="lazy" onerror="this.remove()">
+            <span class="xp__no">03</span>
+            <h3 class="xp__vtitle" aria-hidden="true">Upgradation &amp; Remodelling</h3>
+            <div class="xp__content">
+              <span class="xp__phase">Pre-design</span>
+              <h3>Upgradation &amp; Remodelling</h3>
+              <p>Audits and retrofits that bring older systems up to current codes and efficiency standards.</p>
+              <a href="#contact" class="xp__cta">Enquire about this service <i class="bi bi-arrow-up-right"></i></a>
+            </div>
+          </article>
+          <article class="xp__panel" tabindex="0" aria-expanded="false">
+            <img class="xp__img" src="https://images.unsplash.com/photo-1513828583688-c52646db42da?w=1100&q=75&auto=format&fit=crop" alt="" loading="lazy" onerror="this.remove()">
+            <span class="xp__no">04</span>
+            <h3 class="xp__vtitle" aria-hidden="true">Detail Design</h3>
+            <div class="xp__content">
+              <span class="xp__phase">Design</span>
+              <h3>Detail Design</h3>
+              <p>Construction-ready drawings, calculations and specifications for every discipline.</p>
+              <a href="#contact" class="xp__cta">Enquire about this service <i class="bi bi-arrow-up-right"></i></a>
+            </div>
+          </article>
+          <article class="xp__panel" tabindex="0" aria-expanded="false">
+            <img class="xp__img" src="https://images.unsplash.com/photo-1460472178825-e5240623afd5?w=1100&q=75&auto=format&fit=crop" alt="" loading="lazy" onerror="this.remove()">
+            <span class="xp__no">05</span>
+            <h3 class="xp__vtitle" aria-hidden="true">Tendering</h3>
+            <div class="xp__content">
+              <span class="xp__phase">Design</span>
+              <h3>Tendering</h3>
+              <p>Bills of quantities, tender documents and bid evaluation that make costs clear.</p>
+              <a href="#contact" class="xp__cta">Enquire about this service <i class="bi bi-arrow-up-right"></i></a>
+            </div>
+          </article>
+          <article class="xp__panel" tabindex="0" aria-expanded="false">
+            <img class="xp__img" src="https://images.unsplash.com/photo-1541888946425-d81bb19240f5?w=1100&q=75&auto=format&fit=crop" alt="" loading="lazy" onerror="this.remove()">
+            <span class="xp__no">06</span>
+            <h3 class="xp__vtitle" aria-hidden="true">Project Management</h3>
+            <div class="xp__content">
+              <span class="xp__phase">Delivery</span>
+              <h3>Project Management</h3>
+              <p>Schedules, vendor coordination and reporting that keep the project on time.</p>
+              <a href="#contact" class="xp__cta">Enquire about this service <i class="bi bi-arrow-up-right"></i></a>
+            </div>
+          </article>
+          <article class="xp__panel" tabindex="0" aria-expanded="false">
+            <img class="xp__img" src="https://images.unsplash.com/photo-1504307651254-35680f356dfd?w=1100&q=75&auto=format&fit=crop" alt="" loading="lazy" onerror="this.remove()">
+            <span class="xp__no">07</span>
+            <h3 class="xp__vtitle" aria-hidden="true">Construction Supervision</h3>
+            <div class="xp__content">
+              <span class="xp__phase">Delivery</span>
+              <h3>Construction Supervision</h3>
+              <p>Quality checks on site, so what gets installed matches what was designed.</p>
+              <a href="#contact" class="xp__cta">Enquire about this service <i class="bi bi-arrow-up-right"></i></a>
+            </div>
+          </article>
+          <article class="xp__panel" tabindex="0" aria-expanded="false">
+            <img class="xp__img" src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?w=1100&q=75&auto=format&fit=crop" alt="" loading="lazy" onerror="this.remove()">
+            <span class="xp__no">08</span>
+            <h3 class="xp__vtitle" aria-hidden="true">Commissioning</h3>
+            <div class="xp__content">
+              <span class="xp__phase">Delivery</span>
+              <h3>Commissioning</h3>
+              <p>Testing, balancing and documented handover of every system.</p>
+              <a href="#contact" class="xp__cta">Enquire about this service <i class="bi bi-arrow-up-right"></i></a>
+            </div>
+          </article>
+          <article class="xp__panel" tabindex="0" aria-expanded="false">
+            <img class="xp__img" src="https://images.unsplash.com/photo-1565008447742-97f6f38c985c?w=1100&q=75&auto=format&fit=crop" alt="" loading="lazy" onerror="this.remove()">
+            <span class="xp__no">09</span>
+            <h3 class="xp__vtitle" aria-hidden="true">Consulting &amp; Project Development</h3>
+            <div class="xp__content">
+              <span class="xp__phase">Advisory</span>
+              <h3>Consulting &amp; Project Development</h3>
+              <p>Advice for developers and authorities, from the first idea to a project ready to build.</p>
+              <a href="#contact" class="xp__cta">Enquire about this service <i class="bi bi-arrow-up-right"></i></a>
+            </div>
+          </article>
         </div>
       </div>
-      <div class="svc-preview" aria-hidden="true"><div class="svc-preview__inner"></div></div>
     </section>
 
     <!-- ============ SECTORS (horizontal pinned) ============ -->
@@ -684,26 +756,69 @@
       </div>
     </section>
 
-    <!-- ============ CTA ============ -->
-    <section class="cta" id="contact">
+    <!-- ============ PROJECT BRIEF (drawing-sheet CTA) ============ -->
+    <section class="brief" id="contact">
       <div class="wrap">
-        <div class="cta__card">
-          <div class="cta__mesh" aria-hidden="true"></div>
-          <div class="grain" aria-hidden="true"></div>
-          <div class="cta__content">
-            <span class="eyebrow eyebrow--light reveal"><span class="eyebrow__dot"></span>Have a project in mind?</span>
-            <h2 class="cta__title split-title">Let's discuss <em>your project.</em></h2>
-            <p class="cta__sub reveal">Send us your brief. A senior engineer will reply within one working day with a first view of scope, approach and timeline.</p>
-            <div class="cta__actions reveal">
-              <a href="mailto:office@analystconsultants.com" class="cta__orb magnetic" aria-label="Start a conversation">
-                <span>Start a<br>conversation</span><i class="bi bi-arrow-up-right"></i>
-              </a>
-              <div class="cta__contacts">
-                <a href="tel:+919810037922"><i class="bi bi-telephone"></i>+91-98100 37922</a>
-                <a href="mailto:office@analystconsultants.com"><i class="bi bi-envelope"></i>office@analystconsultants.com</a>
-                <a href="https://wa.me/919810037922" target="_blank" rel="noopener"><i class="bi bi-whatsapp"></i>Chat on WhatsApp</a>
+        <div class="sheet-frame reveal">
+          <span class="tick tick--tl"></span><span class="tick tick--tr"></span><span class="tick tick--bl"></span><span class="tick tick--br"></span>
+
+          <div class="brief__body">
+            <div class="brief__intro">
+              <span class="brief__label"><i></i>Request a Proposal</span>
+              <h2 class="brief__title split-title">Got a project on the <em>drawing board?</em></h2>
+              <p class="brief__sub reveal">Tell us what you are building. A senior engineer will read your brief and reply with a first view of scope, approach and timeline.</p>
+
+              <div class="dim reveal" aria-hidden="true">
+                <span class="dim__line"></span>
+                <span class="dim__text">Reply within 1 working day</span>
               </div>
+
+              <ul class="brief__contacts">
+                <li class="reveal"><span>Call</span><a href="tel:+919810037922">+91-98100 37922</a></li>
+                <li class="reveal"><span>Write</span><a href="mailto:office@analystconsultants.com">office@analystconsultants.com</a></li>
+                <li class="reveal"><span>Chat</span><a href="https://wa.me/919810037922" target="_blank" rel="noopener">WhatsApp us <i class="bi bi-arrow-up-right"></i></a></li>
+                <li class="reveal"><span>Visit</span><p>R-122, 1st Floor, Sector-21, Noida – 201301</p></li>
+              </ul>
             </div>
+
+            <form class="brief-form reveal" id="briefForm" novalidate>
+              <div class="brief-form__head">
+                <span>Project Brief</span>
+                <span class="brief-form__no">AC-2026 / 001</span>
+              </div>
+              <div class="field-row">
+                <label class="field"><input type="text" name="name" placeholder=" " required><span>Your name</span></label>
+                <label class="field"><input type="text" name="contact" placeholder=" " required><span>Email or phone</span></label>
+              </div>
+              <fieldset class="chips" data-group="sector">
+                <legend>Sector</legend>
+                <button type="button" class="chip-opt is-on" aria-pressed="true">Highways</button>
+                <button type="button" class="chip-opt" aria-pressed="false">Commercial</button>
+                <button type="button" class="chip-opt" aria-pressed="false">Residential</button>
+                <button type="button" class="chip-opt" aria-pressed="false">Industrial</button>
+                <button type="button" class="chip-opt" aria-pressed="false">Institutional</button>
+              </fieldset>
+              <fieldset class="chips" data-group="stage">
+                <legend>Where are you now?</legend>
+                <button type="button" class="chip-opt is-on" aria-pressed="true">Just an idea</button>
+                <button type="button" class="chip-opt" aria-pressed="false">Design stage</button>
+                <button type="button" class="chip-opt" aria-pressed="false">Under construction</button>
+                <button type="button" class="chip-opt" aria-pressed="false">Ready to commission</button>
+              </fieldset>
+              <label class="field"><textarea name="message" rows="3" placeholder=" "></textarea><span>A few lines about the project</span></label>
+              <div class="brief-form__foot">
+                <button type="submit" class="btn-pill btn-pill--grad btn-pill--lg magnetic"><span>Send Project Brief</span><i class="bi bi-send"></i></button>
+                <small class="brief-form__msg" id="briefMsg" role="status"></small>
+              </div>
+            </form>
+          </div>
+
+          <div class="title-block" aria-label="Drawing title block">
+            <div class="tb-cell tb-cell--wide"><small>Project</small><strong>Your next project</strong></div>
+            <div class="tb-cell"><small>Engineer</small><strong>Analyst Consultants</strong></div>
+            <div class="tb-cell"><small>Scope</small><strong>Concept → Commissioning</strong></div>
+            <div class="tb-cell"><small>Status</small><strong class="tb-status"><i></i>Ready to start</strong></div>
+            <div class="tb-cell tb-cell--sheet"><small>Sheet</small><strong>01 / 01</strong></div>
           </div>
         </div>
       </div>
@@ -729,7 +844,7 @@
       <div class="footer__grid">
         <div class="footer__brand">
           <a href="#top" class="brand">
-            <span class="brand__mark"><svg viewBox="0 0 64 64"><defs><linearGradient id="bg2" x1="0" y1="0" x2="1" y2="1"><stop offset="0" stop-color="#F2B25C"/><stop offset="1" stop-color="#D9542B"/></linearGradient></defs><path d="M14 48 30 14h4l16 34h-7l-4-9H25l-4 9zM27.5 33h9L32 22z" fill="url(#bg2)"/></svg></span>
+            <span class="brand__mark"><img src="assets/img/logo-mark.png" alt="" width="54" height="36"></span>
             <span class="brand__text"><strong>Analyst</strong><small>Consultants</small></span>
           </a>
           <p>MEP engineering consultancy delivering projects from concept to commissioning.</p>
